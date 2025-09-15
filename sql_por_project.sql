@@ -146,6 +146,7 @@ FROM orders_cleaned
 GROUP BY customer_name, email
 ORDER BY total_spent DESC
 LIMIT 5;
+
 -- I looked at how much revenue was generated per day.
 -- This kind of temporal trend is useful for reporting and forecasting.
 SELECT order_date, COUNT(*) AS num_orders, SUM(amount) AS total_sales
@@ -153,6 +154,8 @@ FROM orders_cleaned
 WHERE amount IS NOT NULL
 GROUP BY order_date
 ORDER BY order_date;
+
+
 -- I checked for rows with missing or invalid data even after cleaning.
 -- These would either need manual review or exclusion from analysis.
 SELECT *
